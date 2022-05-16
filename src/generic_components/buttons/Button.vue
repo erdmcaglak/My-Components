@@ -35,6 +35,7 @@
  -->
     <div @mouseenter="enterBorderedButton" @mouseleave="leaveBorderedButton" v-if="bordered" @click="clickedButton" :style="styleObject" class="bordered">
         <Icon 
+            v-if="icon"
             :icon="icon"
             :width="iconWidth"
             :iconColor="isEnterBorderedButton ? '#fff' :iconColor"
@@ -76,6 +77,7 @@
      -->
     <div v-else @click="clickedButton" :style="styleObject" class="filled">
         <Icon
+            v-if="icon"
             :icon="icon"
             :width="iconWidth"
             :iconColor="iconColor"
@@ -177,7 +179,7 @@ export default {
     font-family:Arial, Helvetica, sans-serif;
     cursor: pointer;
     padding: 6px 16px;
-    background-color: var(--background);
+    background: var(--background);
     border-radius: var(--radius);
     transition: all .1s linear;
     &:hover{

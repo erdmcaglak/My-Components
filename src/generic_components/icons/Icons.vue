@@ -36,6 +36,7 @@ export default {
         iconColor:{type:String,default:'#000'},
         pointer:{type:Boolean,default:false},
         clickEvent:{type:Function},
+        pointerNone:{type:Boolean},
     },
     computed:{
         widthTypeControl : function() {
@@ -55,7 +56,8 @@ export default {
                     '--xs-width':this.width.xs+'px',
                     '--url':"url("+require('@/assets/icons/'+this.icon)+")",
                     '--color':this.iconColor,
-                    '--cursor': this.pointer ? 'pointer':'auto'
+                    '--cursor': this.pointer ? 'pointer':'auto',
+                    '--pointer-event': this.pointerNone ? 'none' : 'auto'
                 }
             }
             else{
@@ -63,6 +65,7 @@ export default {
                     '--width':this.width+'px',
                     '--url':"url("+require('@/assets/icons/'+this.icon)+")",
                     '--color':this.iconColor,
+                    '--pointer-event': this.pointerNone ? 'none' : 'auto'
                 }
             }
             
@@ -91,8 +94,12 @@ export default {
     -webkit-mask-size: cover;
     mask-size: cover;
     background-color: var(--color);
+    pointer-events: var(--pointer-event);
+    user-select: none;
 }
 .repsonsive-generic-icon{
+    user-select: none;
+    pointer-events: var(--pointer-event);
     cursor: var(--cursor);
     @include d-flex-center;
     -webkit-mask: var(--url) no-repeat 100% 100%;
