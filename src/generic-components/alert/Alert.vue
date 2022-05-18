@@ -30,7 +30,7 @@
 
 <script>
 import {stringShorter} from "@/utils/utils.js"
-import GenericIcon from "@/generic_components/icon/Icon.vue"
+import GenericIcon from "@/generic-components/icon/Icon.vue"
 import _ from "lodash"
 export default {
     components:{
@@ -101,6 +101,7 @@ export default {
 
 <style lang="scss">
 @import "@/scss/mixins.scss";
+@import "@/scss/transition.scss";
 .flash-main{
     overflow: auto;
     overflow-x: hidden;
@@ -166,41 +167,4 @@ export default {
         }
     }
 }
-.slide-alert-enter{
-    opacity: 0;
-}
-.slide-alert-enter-active{
-    animation: slide-alert-in .3s ease-out forwards;
-    transition: opacity .3s;
-}
-.slide-alert-leave{
-}
-.slide-alert-leave-active{
-    animation: slide-alert-out .3s ease-out forwards;
-    transition: opacity .3s;
-    opacity: 0;
-}
-.slide-alert-move{
-    transition: transform .3s;
-}
-
-@keyframes slide-alert-in{
-    from{
-        transform: translateX(100%);
-    }
-    to{
-        transform: translateX(0);
-    }
-}
-
-@keyframes slide-alert-out{
-    from{
-        transform: translateX(0);
-    }
-    to{
-        transform: translateX(100%);
-    }
-}
-
-
 </style>

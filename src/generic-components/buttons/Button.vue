@@ -35,7 +35,7 @@
  -->
     <div @mouseenter="enterBorderedButton" @mouseleave="leaveBorderedButton" v-if="bordered" @click="clickedButton" :style="styleObject" class="bordered">
         <Icon 
-            v-if="icon"
+            v-if="icon!=''"
             :icon="icon"
             :width="iconWidth"
             :iconColor="isEnterBorderedButton ? '#fff' :iconColor"
@@ -77,7 +77,7 @@
      -->
     <div v-else @click="clickedButton" :style="styleObject" class="filled">
         <Icon
-            v-if="icon"
+            v-if="icon!=''"
             :icon="icon"
             :width="iconWidth"
             :iconColor="iconColor"
@@ -87,7 +87,7 @@
 </template>
 
 <script>
-import Icon from "@/generic_components/icon/Icon.vue"
+import Icon from "@/generic-components/icon/Icon.vue"
 export default {
     data(){
         return{

@@ -4,27 +4,51 @@
   transition: opacity 0.2s ease;
 }
 
-.route-fade-enter,
-.route-fade-leave {
+.fade-enter,
+.fade-leave {
   opacity: 0;
 }
 
-//Transition Slide
+// Transition fade and scale
 
-.slide-enter{
+.fade-scale-enter{
+    opacity: 0;
+    transform: scale(0);
+}
+.fade-scale-enter-active{
+    transition: all 0.2s ease;
+}
+.fade-scale-leave{
+    transform: scale(1);
+    opacity: 1;
+}
+.fade-scale-leave-active{
+    transition: all 0.2s ease;
+    opacity: 0;
+    transform: scale(0);
+}
 
+// Alert slide
+
+.slide-alert-enter{
+    opacity: 0;
 }
-.slide-enter-active{
-    animation: slide-left .3s linear forwards;
+.slide-alert-enter-active{
+    animation: slide-alert-in .3s ease-out forwards;
+    transition: opacity .3s;
 }
-.slide-leave{
-    
+.slide-alert-leave{
 }
-.slide-leave-active{
-    animation: slide-right .3s linear forwards;
+.slide-alert-leave-active{
+    animation: slide-alert-out .3s ease-out forwards;
+    transition: opacity .3s;
+    opacity: 0;
+}
+.slide-alert-move{
+    transition: transform .3s;
 }
 
-@keyframes slide-left {
+@keyframes slide-alert-in{
     from{
         transform: translateX(100%);
     }
@@ -32,42 +56,8 @@
         transform: translateX(0);
     }
 }
-@keyframes slide-right {
-    from{
-        transform: translateX(0);
-    }
-    to{
-        transform: translateX(-100%);
-    }
-}
 
-
-
-
-
-
-.sign-up-slide-enter{
-
-}
-.sign-up-slide-enter-active{
-    animation: sign-up-slide-left .3s linear forwards;
-}
-.sign-up-slide-leave{
-    
-}
-.sign-up-slide-leave-active{
-    animation: sign-up-slide-right .3s linear forwards;
-}
-
-@keyframes sign-up-slide-left {
-    from{
-        transform: translateX(100%);
-    }
-    to{
-        transform: translateX(0);
-    }
-}
-@keyframes sign-up-slide-right {
+@keyframes slide-alert-out{
     from{
         transform: translateX(0);
     }
@@ -75,5 +65,6 @@
         transform: translateX(100%);
     }
 }
+
 
 

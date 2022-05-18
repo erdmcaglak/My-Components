@@ -5,14 +5,16 @@
 </template>
 
 <script>
-import Navbar from "@/generic_components/navbar/Navbar.vue"
-import Alert from "@/generic_components/alert/Alert.vue"
-import Button from "@/generic_components/buttons/Button.vue"
-import Icon from "@/generic_components/icon/Icon.vue"
-import Badge from "@/generic_components/badge/Badge.vue"
+import Navbar from "@/generic-components/navbar/Navbar.vue"
+import Alert from "@/generic-components/alert/Alert.vue"
+import Button from "@/generic-components/buttons/Button.vue"
+import Icon from "@/generic-components/icon/Icon.vue"
+import Badge from "@/generic-components/badge/Badge.vue"
+import Modal from "@/generic-components/modal/Modal.vue"
 export default {
   data(){
     return{
+      isOpen:false,
       error:{},
       headerItems:[
         {
@@ -41,6 +43,7 @@ export default {
     Navbar,
     Icon,
     Badge,
+    Modal,
   },
   methods:{
     temp(item){
@@ -55,6 +58,7 @@ export default {
 
 <style lang="scss">
 @import "@/scss/mixins.scss";
+@import "@/scss/transition.scss";
 *{
   margin: 0;
   box-sizing: border-box;
@@ -79,8 +83,9 @@ html,body{
 }
 
 .main{
-  background-color: rgb(202, 202, 202);
+  background-color: #fff;
   height: 100%;
+  width: 100%;
   @include d-flex(column,center,center);
   
 }

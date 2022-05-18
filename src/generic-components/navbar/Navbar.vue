@@ -123,7 +123,7 @@
 </template>
 
 <script>
-import Icon from "@/generic_components/icon/Icon.vue"
+import Icon from "@/generic-components/icon/Icon.vue"
 
 export default {
     components:{
