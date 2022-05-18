@@ -5,9 +5,6 @@ import Vue from 'vue'
 import uniqid from "uniqid"
 import axios from "axios"
 import browser from 'browser-detect'
-import {
-  SERVER_URL
-} from "@/control.js";
 //timestamp ı tarihe çevirir 
 //112345246346 -> 02.11.2020
 export function timeStampToDay(date){
@@ -179,7 +176,7 @@ export function cookieSetter(key,value,path='/'){
 //socket i tekrar başlatır
 export const restartSocket = (token)=>{
   console.log('Restart Socket')
-  const socket = io(`https://test.whapi.chat`, {
+  const socket = io(`https://localhost:8081`, {
     autoConnect: false,
     auth: {
       token,
@@ -200,87 +197,33 @@ export const textReplacer = (text,replacedText,value)=>{
 export const utidCreator=async ()=>{
   if(window.localStorage.getItem('utid-1')){
     let control = Date.now() - parseInt(window.localStorage.getItem('utid-1').split('-')[1]);
-    //('a')
     if(!(control<120000)){
-      //console.log('b')
       if(window.localStorage.getItem('utid-2')){
-        //console.log('c')
         let control2 = Date.now() - window.localStorage.getItem('utid-2').split('-')[1];
         if(control2<120000){
-          //console.log('d')
           window.localStorage.setItem('utid-1',window.localStorage.getItem('utid-2'))
           Vue.prototype.$utid = window.localStorage.getItem('utid-1')
           window.localStorage.removeItem('utid-2');
         }
         else{
-          //console.log('f')
           window.localStorage.setItem('utid-1',`${uniqid()}-${Date.now()}`);
           Vue.prototype.$utid = window.localStorage.getItem('utid-1')
           window.localStorage.removeItem('utid-2');
-          let browserInfo = browser();
-          const res = await axios.get('https://ifconfig.me').catch(err=>{
-              console.log({err})
-          })
-          
-          let ipv4 = res.data;
-          const resp = await axios.get(`https://ipapi.co/${ipv4}/json`).catch(err=>{
-              console.log({err})
-          });
-          let location = resp.data;
-          const agentObj = {
-              uid:window.localStorage.getItem('utid-1').split('-')[0],
-              agent:{
-              ip:ipv4,
-              location,
-              browserInfo,
-              }
-          }
-          const response = await axios.post(`${SERVER_URL}/login/agent`,agentObj).catch(err=>{
-              console.log('Error in login/agent')
-              console.log({err})
-          })
         }
       }
       else{
-        //console.log('ş')
         window.localStorage.setItem('utid-1',`${uniqid()}-${Date.now()}`);
         Vue.prototype.$utid = window.localStorage.getItem('utid-1')
-        let browserInfo = browser();
-        const res = await axios.get('https://ifconfig.me').catch(err=>{
-            console.log({err})
-        })
-        
-        let ipv4 = res.data;
-        const resp = await axios.get(`https://ipapi.co/${ipv4}/json`).catch(err=>{
-            console.log({err})
-        });
-        let location = resp.data;
-        const agentObj = {
-            uid:window.localStorage.getItem('utid-1').split('-')[0],
-            agent:{
-            ip:ipv4,
-            location,
-            browserInfo,
-            }
-        }
-        const response = await axios.post(`${SERVER_URL}/login/agent`,agentObj).catch(err=>{
-            console.log('Error in login/agent')
-            console.log({err})
-        })
       }
     }
     else{
-      //console.log('g')
       if(window.localStorage.getItem('utid-2')){
-        //console.log('h')
         let control2 = Date.now() - window.localStorage.getItem('utid-2').split('-')[1];
         if(control > control2){
-          //console.log('k')
           Vue.prototype.$utid = window.localStorage.getItem('utid-2')
         }
       }
       else{
-        //console.log('l')
         Vue.prototype.$utid = window.localStorage.getItem('utid-1')
       }
     }
@@ -288,27 +231,25 @@ export const utidCreator=async ()=>{
   else{
     window.localStorage.setItem('utid-1',`${uniqid()}-${Date.now()}`);
     Vue.prototype.$utid = window.localStorage.getItem('utid-1')
-    let browserInfo = browser();
-    const res = await axios.get('https://ifconfig.me').catch(err=>{
-        console.log({err})
-    })
-    
-    let ipv4 = res.data;
-    const resp = await axios.get(`https://ipapi.co/${ipv4}/json`).catch(err=>{
-        console.log({err})
-    });
-    let location = resp.data;
-    const agentObj = {
-        uid:window.localStorage.getItem('utid-1').split('-')[0],
-        agent:{
-        ip:ipv4,
-        location,
-        browserInfo,
-        }
-    }
-    const response = await axios.post(`${SERVER_URL}/login/agent`,agentObj).catch(err=>{
-        console.log('Error in login/agent')
-        console.log({err})
-    })
   }
+}
+
+export const whatMyIp = async ()=>{
+  const res = await axios.get('https://ifconfig.me').catch(err=>{
+      console.log({err})
+  })
+  
+  return res.data;
+}
+
+export const whatMyLocation = async ()=>{
+  let ipv4 = whatMyIp()
+  const response = await axios.get(`https://ipapi.co/${ipv4}/json`).catch(err=>{
+      console.log({err})
+  });
+  return response.data;
+}
+
+export const whatMyBrowser = async ()=>{
+  return browser();
 }

@@ -87,7 +87,7 @@
 </template>
 
 <script>
-import Icon from "@/generic_components/icons/Icons.vue"
+import Icon from "@/generic_components/icon/Icon.vue"
 export default {
     data(){
         return{

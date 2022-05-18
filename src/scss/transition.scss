@@ -1,23 +1,11 @@
 // Transition Fade
-.fade-enter{
-    opacity: 0;
-}
-.fade-enter-active{
-    transition: opacity .3s;
-}
-.fade-leave{
-}
-.fade-leave-active{
-    opacity: 0;
-}
-
-.route-fade-enter-active,
-.route-fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.2s ease;
 }
 
-.route-fade-enter-from,
-.route-fade-leave-to {
+.route-fade-enter,
+.route-fade-leave {
   opacity: 0;
 }
 
@@ -88,33 +76,4 @@
     }
 }
 
-.sign-in-slide-enter{
-
-}
-.sign-in-slide-enter-active{
-    animation: sign-in-slide-right .3s linear forwards;
-}
-.sign-in-slide-leave{
-    
-}
-.sign-in-slide-leave-active{
-    animation: sign-in-slide-left .3s linear forwards;
-}
-
-@keyframes sign-in-slide-left {
-    from{
-        transform: translateX(0);
-    }
-    to{
-        transform: translateX(-100%);
-    }
-}
-@keyframes sign-in-slide-right {
-    from{
-        transform: translateX(-100%);
-    }
-    to{
-        transform: translateX(0);
-    }
-}
 

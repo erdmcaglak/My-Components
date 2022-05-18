@@ -30,7 +30,7 @@
 
 <script>
 import {stringShorter} from "@/utils/utils.js"
-import GenericIcon from "@/generic_components/icons/Icons.vue"
+import GenericIcon from "@/generic_components/icon/Icon.vue"
 import _ from "lodash"
 export default {
     components:{

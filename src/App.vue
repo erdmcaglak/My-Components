@@ -1,44 +1,6 @@
 <template>
   <div class="main">
-    <!-- //! Navbar Sample -->
-    <!-- <Navbar
-      :items="headerItems"
-      @clickEvent="temp"
-      fontColor="#fff"
-      fontSize="2.3"
-      itemHoverColor="#1ee2e7"
-      background="#333"
-      dropMenuBackground="#444"
-      iconColor="#fff"
-    />
-    <router-view></router-view> -->
-    <!-- //! Button Sample || Alert Sample -->
-    <!-- <Button 
-        title="button1" 
-        fontSize="2"
-        background="#32a852"
-        @clickFunc="temp"
-        icon="danger.svg"
-        iconColor="#fff"
-        iconWidth="20"
-        color="#fff"
-        radius="4"
-    />
-
-    <Alert :err="error" /> -->
-
-    <!-- //! Icon Sample -->
-    <!-- <Icon 
-        icon="danger.svg"
-        :width="{
-            default:'20',
-            lg:'18',
-            md:'16',
-            sm:'14',
-            xs:'12'
-        }"
-        iconColor="red"
-    /> -->
+    
   </div>
 </template>
 
@@ -46,7 +8,8 @@
 import Navbar from "@/generic_components/navbar/Navbar.vue"
 import Alert from "@/generic_components/alert/Alert.vue"
 import Button from "@/generic_components/buttons/Button.vue"
-import Icons from "@/generic_components/icons/Icons.vue"
+import Icon from "@/generic_components/icon/Icon.vue"
+import Badge from "@/generic_components/badge/Badge.vue"
 export default {
   data(){
     return{
@@ -76,6 +39,8 @@ export default {
     Button,
     Alert,
     Navbar,
+    Icon,
+    Badge,
   },
   methods:{
     temp(item){
@@ -114,8 +79,15 @@ html,body{
 }
 
 .main{
-  background-color: rgb(231, 229, 229);
+  background-color: rgb(202, 202, 202);
   height: 100%;
-  @include d-flex(column,flex-start,center);
+  @include d-flex(column,center,center);
+  .badge-sample{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: #000;
+    border-radius: 999px;
+  }
 }
 </style>
