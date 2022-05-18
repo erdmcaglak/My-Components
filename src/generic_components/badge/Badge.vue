@@ -2,38 +2,38 @@
 <!-- 
     //! Responsive text badge
     <Badge
-        top:"0",
-        left:"0",
-        badgeText:"badge",
-        fontSize:"1.1",
-        padding:"4",
-        bgColor:"#fff",
-        textColor:"#000",
+        top="0"
+        right="0"
+        badgeText="1"
+        fontSize="1.1"
+        padding="0"
+        bgColor="#454545"
+        textColor="#fff"
         :size="{
-            default:'20'
-            lg:'18'
-            md:'16'
-            sm:'14'
-            xs:'12'
+            default:'20',
+            lg:'18',
+            md:'16',
+            sm:'14',
+            xs:'12',
         }"
     />  
 
     //! Responsive icon badge
     <Badge
-        top:"0",
-        left:"0",
-        fontSize:"1.1",
-        bgColor:"#fff",
-        textColor:"#000",
-        icon:"temp.svg",
+        top="0"
+        left="0"
+        fontSize="1.1"
+        bgColor="#fff"
+        textColor="#000"
+        icon="temp.svg"
         :iconSize="{
-            default:'20'
-            lg:'18'
-            md:'16'
-            sm:'14'
-            xs:'12'
+            default:'20',
+            lg:'18',
+            md:'16',
+            sm:'14',
+            xs:'12',
         }"
-        iconColor:"#fff"
+        iconColor="#fff"
     />
  -->
     <div :style="styleObject" :class="sizeTypeControl ? 'responsive-badge-main':'badge-main'">
@@ -95,7 +95,7 @@ export default {
                     '--padding': this.padding+"px",
                     '--background-color':this.bgColor,
                     '--color':this.textColor,
-                    '--default-size':this.size+'px',
+                    '--default-size':this.size.default+'px',
                     '--lg-size':this.size.lg+'px',
                     '--md-size':this.size.md+'px',
                     '--sm-size':this.size.sm+'px',
@@ -118,6 +118,9 @@ export default {
             }
             
         }
+    },
+    mounted(){
+        console.log({i:this.size})
     }
 }
 </script>
@@ -155,6 +158,8 @@ export default {
     border-radius: 999px;
     background-color: var(--background-color);
     color: var(--color);
+    width: var(--default-size);
+    height: var(--default-size);
     @media screen and (max-width: 1440px) {
         width: var(--lg-size);
         height: var(--lg-size);

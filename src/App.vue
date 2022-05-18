@@ -82,12 +82,6 @@ html,body{
   background-color: rgb(202, 202, 202);
   height: 100%;
   @include d-flex(column,center,center);
-  .badge-sample{
-    position: relative;
-    width: 50px;
-    height: 50px;
-    background-color: #000;
-    border-radius: 999px;
-  }
+  
 }
 </style>
