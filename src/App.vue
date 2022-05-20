@@ -1,6 +1,8 @@
 <template>
   <div class="main">
-    
+      <div class="tooltip-sample">
+
+      </div>
   </div>
 </template>
 
@@ -11,9 +13,16 @@ import Button from "@/generic-components/buttons/Button.vue"
 import Icon from "@/generic-components/icon/Icon.vue"
 import Badge from "@/generic-components/badge/Badge.vue"
 import Modal from "@/generic-components/modal/Modal.vue"
+import Slider from "@/generic-components/slider/Slider.vue"
 export default {
   data(){
     return{
+      images:[
+          {src:'temp1.jpg',id:Math.round(Math.random()*1e4)},
+          {src:'temp2.jpg',id:Math.round(Math.random()*1e4)},
+          {src:'temp3.jpg',id:Math.round(Math.random()*1e4)},
+          {src:'temp4.jpg',id:Math.round(Math.random()*1e4)},
+      ],
       isOpen:false,
       error:{},
       headerItems:[
@@ -44,6 +53,7 @@ export default {
     Icon,
     Badge,
     Modal,
+    Slider,
   },
   methods:{
     temp(item){
@@ -87,6 +97,11 @@ html,body{
   height: 100%;
   width: 100%;
   @include d-flex(column,center,center);
+  .tooltip-sample{
+    width: 100px;
+    height: 100px;
+    background-color: #65e;
+  }
   
 }
 </style>

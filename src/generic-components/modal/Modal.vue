@@ -147,6 +147,7 @@ export default {
     
     .modal{
         @include d-flex-center;
+        overflow: hidden;
         @include box-shadow(0px,0px,18px,-8px,rgba(0,0,0,0.75));
         padding: 10px;
         position: relative;

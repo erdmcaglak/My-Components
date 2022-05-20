@@ -1,4 +1,4 @@
-// Transition Fade
+//! Transition Fade
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s ease;
@@ -9,7 +9,7 @@
   opacity: 0;
 }
 
-// Transition fade and scale
+//! Transition fade and scale
 
 .fade-scale-enter{
     opacity: 0;
@@ -28,8 +28,7 @@
     transform: scale(0);
 }
 
-// Alert slide
-
+//? Alert slide
 .slide-alert-enter{
     opacity: 0;
 }
@@ -66,5 +65,73 @@
     }
 }
 
+//? Slider slide
+
+.next-slide-enter{
+
+}
+.next-slide-enter-active{
+    animation: next-slide-enter-animate .3s ease-out forwards;
+}
+.next-slide-leave{
+    
+}
+.next-slide-leave-active{
+    animation: next-slide-leave-animate .3s ease-out forwards;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@keyframes next-slide-leave-animate {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes next-slide-enter-animate {
+    from{
+        transform: translateX(100%);
+    }
+    to{
+        transform: translateX(0);
+    }
+}
 
 
+.back-slide-enter{
+
+}
+.back-slide-enter-active{
+    animation: back-slide-enter-animate .3s ease-out forwards;
+}
+.back-slide-leave{
+    
+}
+.back-slide-leave-active{
+    animation: back-slide-leave-animate .3s ease-out forwards;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@keyframes back-slide-leave-animate {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(100%);
+    }
+}
+
+@keyframes back-slide-enter-animate {
+    from{
+        transform: translateX(-100%);
+    }
+    to{
+        transform: translateX(0);
+    }
+}

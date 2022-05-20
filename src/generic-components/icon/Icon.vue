@@ -11,11 +11,11 @@
     <Icon 
         icon="temp.svg"
         :width="{
-            default:'20'
-            lg:'18'
-            md:'16'
-            sm:'14'
-            xs:'12'
+            default:'20',
+            lg:'18',
+            md:'16',
+            sm:'14',
+            xs:'12',
         }"
         iconColor="#fff"
     />
